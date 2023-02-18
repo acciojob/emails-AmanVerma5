@@ -41,8 +41,8 @@ public class Gmail extends Email {
     public void deleteMail(String message){
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
-        for(int i=0;i<inbox.size();i++){
-            if(inbox.get(i).message.equals(message)){
+        for(int i=0;i<inbox.size();i++) {
+            if (inbox.get(i).message.equals(message)) {
                 trash.add(inbox.get(i));
                 inbox.remove(i);
                 break;
@@ -74,10 +74,10 @@ public class Gmail extends Email {
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
         int count=0;
-        for(int i=0;i<inbox.size();i++){
-            if(inbox.get(i).date.after(start) && inbox.get(i).date.before(end)) count++;
-            else if(inbox.get(i).date.compareTo(start)==0) count++;
-            else if(inbox.get(i).date.compareTo(end)==0) count++;
+        for (Mail mail : inbox) {
+            if (mail.date.after(start) && mail.date.before(end)) count++;
+            else if (mail.date.compareTo(start) == 0) count++;
+            else if (mail.date.compareTo(end) == 0) count++;
         }
         return count;
     }
