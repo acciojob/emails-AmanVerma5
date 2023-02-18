@@ -45,7 +45,7 @@ public class Gmail extends Email {
             if(inbox.get(i).message.equals(message)){
                 trash.add(inbox.get(i));
                 inbox.remove(i);
-                return;
+                break;
             }
         }
     }
@@ -54,7 +54,7 @@ public class Gmail extends Email {
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
         if(inbox.size()==0){
-            return "null";
+            return null;
         }else{
             return inbox.get(inbox.size()-1).message;
         }
@@ -99,6 +99,6 @@ public class Gmail extends Email {
 
     public int getInboxCapacity() {
         // Return the maximum number of mails that can be stored in the inbox
-        return inboxCapacity;
+        return this.inboxCapacity;
     }
 }
